@@ -1,3 +1,2 @@
-let message: string
-message = 'its working'
+const message = 'its working'
 console.log(message)
