@@ -7,6 +7,11 @@ const userFactory = new UserFactory()
 const { name, password, existingEmail } = UserDefaultValues
 
 const UserRepositoryMock: UserRepository = {
+  createAndSave: jest.fn(
+    (): Promise<string> => {
+      return Promise.resolve('__test__token__')
+    }
+  ),
   getByEmail: jest.fn(
     (emailParam: string): Promise<User> => {
       const user = userFactory.generateUser(name, existingEmail, password)

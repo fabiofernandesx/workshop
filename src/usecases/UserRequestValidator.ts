@@ -24,13 +24,11 @@ class UserRequestValidator {
 
   private AreAllUserResigterRequiredFieldsFilled(user: User): void {
     if (!user.name) throw FormatErrorAsJsonError('name', 'Name is required')
-    if (!user.password)
-      throw FormatErrorAsJsonError('password', 'Password is required')
+    if (!user.password) throw FormatErrorAsJsonError('password', 'Password is required')
     if (!user.email) throw FormatErrorAsJsonError('email', 'Email is required')
   }
   private AreAllUserLoginRequiredFieldsFilled(user: User): void {
-    if (!user.password)
-      throw FormatErrorAsJsonError('password', 'Password is required')
+    if (!user.password) throw FormatErrorAsJsonError('password', 'Password is required')
     if (!user.email) throw FormatErrorAsJsonError('email', 'Email is required')
   }
 
@@ -38,13 +36,11 @@ class UserRequestValidator {
     const regexp = new RegExp(
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     )
-    if (!regexp.test(user.email))
-      throw FormatErrorAsJsonError('email', 'Email is not correct')
+    if (!regexp.test(user.email)) throw FormatErrorAsJsonError('email', 'Email is not correct')
   }
 
   private IsTheEmailAlreadyRegistered(userFromDb: User): void {
-    if (userFromDb)
-      throw FormatErrorAsJsonError('email', 'Email already registered')
+    if (userFromDb) throw FormatErrorAsJsonError('email', 'Email already registered')
   }
 }
 export default UserRequestValidator
