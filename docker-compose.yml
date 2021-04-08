@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: dockerfile.dev
     container_name: auth-service-dev
-    port:
+    ports:
       - '2222:2222'
     volumes:
       - .:/app
