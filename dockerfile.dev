@@ -1,0 +1,6 @@
+FROM node:15.13.0
+
+WORKDIR /app
+
+CMD ["tail", "-f", "/dev/null"]
+
